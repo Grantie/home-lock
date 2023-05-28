@@ -32,6 +32,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+    res.send("server online");
+});
+
 app.post("/unlock", (req, res) => {
     if (req.body.pass === process.env.PASS) {
         member.roles.add(unlockedRole);
