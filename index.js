@@ -39,14 +39,18 @@ app.get("/", (req, res) => {
 app.post("/unlock", (req, res) => {
     if (req.body.pass === process.env.PASS) {
         member.roles.add(unlockedRole);
-        res.send("unlocked");
+        res.send(200);
+    } else {
+        res.send(401);
     }
 });
 
 app.post("/lock", (req, res) => {
     if (req.body.pass === process.env.PASS) {
         member.roles.remove(unlockedRole);
-        res.send("locked");
+        res.send(200);
+    } else {
+        res.send(401);
     }
 });
 
